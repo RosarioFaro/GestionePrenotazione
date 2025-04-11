@@ -40,7 +40,12 @@ public class DatabaseRunner implements CommandLineRunner {
         edificio2.setIndirizzo("Via Milano 2");
         edificio2.setCitta("Roma");
         
-        List<Edificio> edifici = Arrays.asList(edificio1, edificio2);
+        Edificio edificio3 = new Edificio();
+        edificio3.setNome("Casa Bianca");
+        edificio3.setIndirizzo("Via Vittorio Emanuele 3");
+        edificio3.setCitta("Milano");
+        
+        List<Edificio> edifici = Arrays.asList(edificio1, edificio2, edificio3);
         edificioRepository.saveAll(edifici);
         
         Postazione postazione1 = new Postazione();
@@ -67,7 +72,13 @@ public class DatabaseRunner implements CommandLineRunner {
         postazione4.setCapacita(18);
         postazione4.setEdificio(edificio1);
         
-        List<Postazione> postazioni = Arrays.asList(postazione1, postazione2, postazione3, postazione4);
+        Postazione postazione5 = new Postazione();
+        postazione5.setDescrizione("Postazione sala riunioni al 5° piano");
+        postazione5.setTipo(TipoPostazione.SALA_RIUNIONI);
+        postazione5.setCapacita(18);
+        postazione5.setEdificio(edificio3);
+        
+        List<Postazione> postazioni = Arrays.asList(postazione1, postazione2, postazione3, postazione4, postazione5);
         postazioneRepository.saveAll(postazioni);
         
         Utente utente1 = new Utente();

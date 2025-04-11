@@ -78,7 +78,7 @@ public class GestionePrenotazioneApplication implements CommandLineRunner {
 						System.out.println("Scelta non valida. Riprova.");
 				}
 			} else {
-				System.out.println("Gestione Prenotazioni - Seleziona un'opzione:");
+				System.out.println("~ . ~ Gestione Prenotazioni - Seleziona un'opzione: ~ . ~");
 				System.out.println("1. Prenotare una postazione");
 				System.out.println("2. Cercare postazioni");
 				System.out.println("3. Logout");
@@ -104,7 +104,7 @@ public class GestionePrenotazioneApplication implements CommandLineRunner {
 						break;
 					
 					case 2:
-						System.out.println("Inserisci la città dell'edificio:");
+						System.out.println("Inserisci la città dell'edificio (Milano o Roma):");
 						String citta1 = scanner.nextLine();
 						
 						List<String> edifici = prenotazioneService.getNomiEdificiDisponibili(citta1);
@@ -143,7 +143,7 @@ public class GestionePrenotazioneApplication implements CommandLineRunner {
 					
 					case 3:
 						System.out.println("Logout effettuato.");
-						utenteLoggato = null; // Logout
+						utenteLoggato = null;
 						break;
 					
 					case 4:

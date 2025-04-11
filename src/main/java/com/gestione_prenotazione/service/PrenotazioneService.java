@@ -24,6 +24,10 @@ public class PrenotazioneService {
     
     public String prenotaPostazione(String username, LocalDate dataPrenotazione, TipoPostazione tipoPostazione, String citta) {
         try {
+            if (dataPrenotazione.isBefore(LocalDate.now())) {
+                throw new PrenotazioneException("Non è possibile prenotare per una data passata.");
+            }
+            
             Utente utente = utenteRepository.findByUsername(username);
             if (utente == null) {
                 throw new PrenotazioneException("Utente non trovato");
@@ -42,7 +46,7 @@ public class PrenotazioneService {
             for (Postazione postazione : postazioniDisponibili) {
                 boolean postazioneOccupata = prenotazioneRepository.existsByPostazioneAndData(postazione, dataPrenotazione);
                 if (postazioneOccupata) {
-                    return "La postazione " + postazione + " è già prenotata per questa data.";
+                    return "La postazione " + postazione.getDescrizione() + " è già prenotata per questa data.";
                 }
             }
             
